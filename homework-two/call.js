@@ -9,15 +9,14 @@ document.getElementsByTagName("h2")[1].innerHTML = "Denisse Henriquez Dubon";
 
 //Have a higher order function that use a call back with taking two number and finding the total and average
 
-let text = document.getElementsByTagName("p");
 document.getElementsByTagName("p")[0].innerHTML = "Numbers Chosen: ";
 document.getElementsByTagName("p")[1].innerHTML = "Total: ";
 document.getElementsByTagName("p")[2].innerHTML = "Average: ";
 
 function twoNum(num1, num2, num3, num4) {
-  text[0].innerHTML += num1 + num2;
-  text[1].innerHTML += num3;
-  text[2].innerHTML += num4;
+  document.getElementsByTagName("p")[0].innerHTML += num1 + num2;
+  document.getElementsByTagName("p")[1].innerHTML += num3;
+  document.getElementsByTagName("p")[2].innerHTML += num4;
 }
 
 function allNum(num1, num2, Callback) {
