@@ -1,0 +1,27 @@
+div#wrapper{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 20px;
+}
+
+.container{
+    display: flex;
+    padding: 5px;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    background-color: lightgray;
+    border-radius: 10px;
+    width: 440px;
+    height: 80px;
+}
+
+.quote {
+    font-weight: bold;
+}
+
+.author{
+    align-self: flex-end;
+    display: block;
+    font-weight: bold;
+    font-style: italic;
+}
