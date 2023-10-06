@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Challenge
+      var arr = [1, 2, 3, 4, 5];
+      var reduceFn = arr.reduce(function (accumulator, nextValue) {
+        let num = nextValue * nextValue;
+        console.log(num);
+        if (num % 2 == 0) {
+          return accumulator + num;
+        }
+        return accumulator;
+      }, 50);
+
+      // console.log("Reduce Function", reduceFn);
+      //Rest
+      function add(...nums) {
+        let total = 0;
+
+        for (const n of nums) {
+          total += n;
+        }
+        return total;
+      }
+
+      console.log("Add Function", add(1, 3, 5, 7, 9));
+
+      function printVal(a, b, ...c) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+      }
+
+      printVal(1, 2, 3, 4, 5, 6, 7, 8);
+      printVal(1, 2);
+      printVal("happy", "halloween", "october");
+
+      function cb(num1, num2, ...mValues) {
+        let total = mValues.reduce(function (accum, next) {
+          accum += next;
+          return accum;
+        }, 0);
+        let myAvg = total / mValues.length;
+        console.log("total: ", total);
+        console.log("Average: ", myAvg);
+      }
+
+      function higherOrder(num1, num2, cb) {
+        let a = num1 + num2;
+        let b = num1 - num2;
+        let c = num1 * num2;
+        let d = num1 / num2;
+        cb(num1, num2, a, b, c, d);
+      }
+
+      higherOrder(4, 2, cb);
+
+      //Spread
+      //Takes an array and SPREADS them out to individuals values
+
+      let arr1 = [1, 2, 3];
+      let arr2 = [4, 5, 6];
+      let arr3 = [7, 8, 9];
+
+      let combine = [...arr1, ...arr2, ...arr3];
+      console.log("Spread: ", combine);
+      console.log("Max Value: ", Math.max(...combine));
+
+      function sumVal(a, b, c) {
+        return a + b + c;
+      }
+      console.log("Sums: ", sumVal(...arr1));
+
+      //Starts: [1,6] [2,3,4,5]
+      //End: [1,2,3,4,5,6]
+
+      function isMiddle(arr, vals) {
+        let mid = Math.floor(arr.length / 2);
+        arr.splice(mid, 0, ...vals);
+        return arr;
+      }
+      console.log("Place is Middle: ", isMiddle([1, 6], [2, 3, 4, 5]));
+    </script>
+  </body>
+</html>
