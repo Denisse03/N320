@@ -60,10 +60,10 @@ document.getElementsByClassName("sList")[1].innerHTML += studentName;
 
 //map
 const studentSummaries = students.map((student) => {
-  const averageGrade =
+  const avgGrade =
     student.grades.reduce((total, grade) => total + grade, 0) /
     student.grades.length;
-  return `Name: ${student.name}, Average Grade: ${averageGrade}`;
+  return `Name: ${student.name}, Average Grade: ${avgGrade}`;
 });
 
 document.getElementById("studentAvgs").innerHTML = studentSummaries;
