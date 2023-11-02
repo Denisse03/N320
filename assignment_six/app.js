@@ -18,6 +18,7 @@ const app = Vue.createApp({
       ],
       favorite: 0,
       favoriteItem: "",
+      newSong: "",
     };
   },
   methods: {
@@ -28,10 +29,19 @@ const app = Vue.createApp({
       return dueDate.toLocaleDateString();
     },
     newFav() {
-      this.favorite = (this.favorite + 1) % this.items.length;
+      if (this.favorite + 1 < this.items.length) {
+        this.favorite += 1;
+      } else {
+        this.favorite = 0;
+      }
       this.favoriteItem = this.items[this.favorite].name;
     },
-    addItem() {},
+    addItem() {
+      if (this.newSong != "") {
+        this.items.push({ id: this.items, name: this.newSong });
+        this.newSong = "";
+      }
+    },
   },
 });
 

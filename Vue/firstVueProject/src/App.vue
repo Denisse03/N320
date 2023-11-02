@@ -1,47 +1,56 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<!-- <template>
+  <div>
+    <header>
+      <h2>Shopping List</h2>
+      </header>
+      <input type="text" ref="inputValue" v-model="inputValue" @keyup.enter="addItem" />
+     
+      <button @click="addItem">Add Item</button>
+
+      <ul>
+        <li v-for="(item,  i) in shoppingLists" :key="1">{{ item }}</li>
+      </ul>
+  </div>
+</template>
+<script>
+
+export default{
+  data(){
+    return{
+      inputValue: '',
+      shoppingLists:[],
+    }
+  },
+  methods:{
+    addItem(){
+      //If items has a value, push to array
+      if(this.inputValue!=''){
+        this.shoppingLists.push(this.inputValue)
+        this.inputValue = "";
+      }
+      console.log(this.shoppingLists)
+      this.$refs.inputValue.focus()
+     
+      //Clear the input after push
+
+      //Bring focus to input for next addition
+    }
+
+  }
+}
 </script>
+<style>
+</style> -->
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <h2>My Shopping List</h2>
+  <shopping-list></shopping-list>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script></script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style>
+h2{
+  color: blue;
 }
 </style>

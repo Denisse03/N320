@@ -26,8 +26,9 @@
       <br />
 
       <label for=""></label>
-      <input type="text" />
-      <button @click="addItem">Add to List</button>
+      <input type="text" v-model="newSong" />
+      <button @click="addItem">Add {{newSong}} to List</button>
+      <p v-show="newSong">{{newSong}} has been added to your list!</p>
     </article>
   </body>
 </html>
