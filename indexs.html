@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>View Basic</title>
+  </head>
+  <body>
+    <h1>N320 Course Goals</h1>
+    <section id="myGoals">
+      <p>{{courseGoals1}}</p>
+      <p>{{courseGoals2}}</p>
+      <p><a v-bind:href="VueLink"> Vue Resource </a></p>
+      <p>{{dates}}</p>
+      <p>my goals: {{ newGoal() }}</p>
+      <p v-html="courseGoals3"></p>
+
+      <button v-on:click="addMore(5)">Add</button>
+      <button v-on:click="counter--">Remove</button>
+      <p>Count: {{counter}}</p>
+
+      <input type="text" v-model="name" />
+      <p>{{name}}</p>
+      <p>{{fullName}}</p>
+      <p>Name Length: {{nameData[0]}}</p>
+      <p>Middle Character: {{nameData[1]}}</p>
+      <button v-on:click="resetName">Reset Name</button>
+
+      <form v-on:submit.prevent="submitForm">
+        <input v-on:keyup.space="consoleMe" type="text" />
+        <button>Sign Up</button>
+      </form>
+    </section>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js">
+      defer
+    </script>
+    <script src="vueapp.js">
+      defer
+    </script>
+  </body>
+</html>

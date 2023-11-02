@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <article id="challenge">
+      <h1>{{names}}</h1>
+      <h2>{{course}} {{assignmentname}}</h2>
+      <h3>Due Date: {{ getDueDate()}}</h3>
+      <h4>Diffculty Level: {{difficulty}}/5</h4>
+      <p>
+        ---------------------------------------------------------------------------------------------
+      </p>
+      <h1>{{title}}</h1>
+      <ul>
+        <li v-for="song in items" v-bind:key="song.id">{{song.name}}</li>
+      </ul>
+      <button v-on:click="newFav">Favorite Items</button>
+      <p v-show="favoriteItem">My favoritve song is {{favoriteItem}}</p>
+      <br />
+
+      <label for=""></label>
+      <input type="text" />
+      <button @click="addItem">Add to List</button>
+    </article>
+  </body>
+</html>

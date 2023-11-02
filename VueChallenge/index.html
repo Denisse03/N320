@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Challenge App</title>
+  </head>
+
+  <body>
+    <article id="challenge">
+      <h1>{{title}}</h1>
+      <h2>{{names}}</h2>
+      <p>{{getTodayDate()}}</p>
+
+      <!-- <input v-model="greeting" type="text" />
+      <p>{{greeting}}</p>
+
+      <input type="text" @blur="displayText" ref="disRef" />
+      <p>{{refText}}</p> -->
+
+      <greeting-input></greeting-input>
+    </article>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js">
+      defer
+    </script>
+    <script src="apps.js">
+      defer
+    </script>
+  </body>
+</html>
