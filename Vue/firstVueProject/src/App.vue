@@ -51,6 +51,9 @@ export default{
 
 <style>
 h2{
-  color: blue;
+  background-color: crimson;
+  padding: 10px;
+  color: white;
+  margin: 0;
 }
 </style>

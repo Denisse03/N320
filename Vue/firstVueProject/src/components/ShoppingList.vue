@@ -8,7 +8,12 @@
         <button @click="addItem">Add Item</button>
   
         <ul>
-          <li v-for="(item,  i) in shoppingLists" :key="1">{{ item }}</li>
+          <li v-for="(item,  i) in shoppingLists" :key="1">{{ item }}
+            <button @click="deleteItem(i)">Delete</button>
+            <button @click="editItem(i)">Edit</button>
+            <button @click="deleteItem(-1)">Delete All</button>
+          
+          </li>
         </ul>
     </div>
   </template>
@@ -34,6 +39,18 @@
         //Clear the input after push
   
         //Bring focus to input for next addition
+      },
+      deleteItem(i){
+        this.shoppingLists=(i+1) ? this.shoppingLists.filter((item, x)=> x!==i) : [];
+      },
+      editItem(i){
+        this.shoppingLists.forEach((item, k) =>{
+          if (i===k){
+            let newValue = prompt(`Current Value: ${item}`);
+            this.shoppingLists.splice(k, 1, newValue);
+
+          } 
+        })
       }
   
     }
