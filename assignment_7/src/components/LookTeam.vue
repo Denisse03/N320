@@ -10,8 +10,9 @@
             <option value="Designer">Designer</option>
             <option value="UI/UX">UI/UX</option>
         </select> <br/>
+        <custom-button></custom-button>
         
-        <button>Add To Team</button>
+        <!-- <button>Add To Team</button> -->
     
     </form> 
 </template>

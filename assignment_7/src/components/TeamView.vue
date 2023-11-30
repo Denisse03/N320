@@ -2,7 +2,7 @@
  
  <div>
     <h1>Team Member</h1>
-    <team-info v-for="member in members" :key="member.id" :name="member.name" :phone="member.phone" :email="member.email" :role="member.role" :teamName="member.team" @join-team="joinTeam"   ></team-info>
+    <team-info v-for="member in filterList" :key="member.id" :name="member.name" :phone="member.phone" :email="member.email" :role="member.role" :teamName="member.team" :currentTeam="currentTeam" @join-team="joinTeam"></team-info>
   </div>
 
   <br/> 
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { toHandlers } from 'vue';
+
 export default{
  
     data() {
@@ -113,10 +115,10 @@ export default{
       team: '',
       },
       ],
-        };
-        TeamsList:[];
-        filterList: [];
-
+        TeamsList:[],
+        filterList: [],
+        currentTeam: "",
+    }
     },
     methods: {
         addTeam(name, phone, email, role) {
@@ -125,27 +127,37 @@ export default{
                 phone: phone,
                 email: email,
                 role: role,
+                team: ""
                 
             };
-            console.log(newTeam.role);
-            console.log(newTeam);
             this.members.push(newTeam);
         },
         filterTeam(tName, role){
-            console.log("hi")
-            console.log(tName)
-            console.log(role)
-            members.filter( members => members.role == role ) 
-            // members.forEach((member)=>{
-            //     filterList.push(this.members.tName)
-            // })
-            member.filterList.push(this.members.tName);
+            this.filterList = this.members.filter((member) => member.role === role);
+            this.currentTeam=tName;
         },
        
-        toggleTeam(value) {
-            const currentTeam = this.members.find((m) => m.name === value);
-            currentTeam.role = !currentTeam.role;
-        }
+        joinTeam(memberName) {
+            const member = this.members.find((m) => m.name === memberName);
+            
+            const newTeam = {
+                name: member.name,
+                phone: member.phone,
+                email: member.email,
+                role: member.role,
+                team: this.currentTeam,
+                
+            };
+            this.TeamsList.push(newTeam);
+            console.log(this.TeamsList)
+  
+          
+        },
+
+        // toggleTeam(value) {
+        //     const currentTeam = this.members.find((m) => m.name === value);
+        //     currentTeam.role = !currentTeam.role;
+        // }
     },
 }
 

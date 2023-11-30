@@ -6,8 +6,17 @@
         <div v-if="visibleData">    
         <p>{{ phone }}</p>
             <p>{{ email }}</p>
-            <p>{{ team }}</p>
-            <button v-if="!team" @click="joinTeam()"> Join {{ teamName }}</button>
+            <!-- <p>{{ team }}</p> -->
+            <p>{{ teamName=="" ? 'None' : teamName }} </p>
+            
+            <button v-show="!teamShow" v-if="!teamName" @click="joinTeam()"> 
+                <slot>
+                Join {{ currentTeam }}
+
+            </slot>
+            
+            </button>
+     
         </div>
 
         
@@ -18,7 +27,8 @@
 export default{
     data(){
         return{
-            visibleData: false
+            visibleData: false,
+            teamShow: false,
         }
     }, 
     props:{
@@ -26,15 +36,19 @@ export default{
         phone: String,
         email: String,
         role: String,
+        currentTeam: String,
+        teamName: String,
        
     },
     // emits:["join-team"],
     methods:{
         toggleInfo(){
             this.visibleData=!this.visibleData
+
         },
         joinTeam(){
             this.$emit("join-team", this.name,this.teamName)
+            this.teamShow=true
         }
         // toggleTeam(value){
         //     this.$emit("toggle-info", value);
