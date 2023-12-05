@@ -1,5 +1,7 @@
 <template>
+        
     <form @submit.prevent="submitData">
+    
         <label for="teamName">Team Name:</label>
         <input type="text" v-model="teamName"/>
         <br/>

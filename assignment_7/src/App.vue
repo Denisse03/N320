@@ -1,21 +1,29 @@
 <template>
- 
+    <navigation-header></navigation-header>
 
-<team-view >
-  
-</team-view>
-
-<!-- <add-team @add-team="addTeam"></add-team> -->
-
- <!-- <add-team></add-team> -->
+    <!-- <team-view ></team-view> -->
+   
 <!-- 
- <team-info></team-info> -->
-  
+    <RouterView :name="member.name" :phone="member.phone" :email="member.email" :role="member.role" :teamName="member.team" :currentTeam="currentTeam"/> -->
+
+    <!-- <RouterView  :name="name" :phone="phone" :email="email" :role="role" :teamName="team" :currentTeam="currentTeam"/> -->
+<!-- 
+    <RouterView  :member="members" :filterList="filterList" @join-team="joinTeam"/> -->
+
+
+    <RouterView  :member="members" :filterList="filterList" :currentTeam="currentTeam"/>
+
 
 </template>
 
 <script>
+import NavigationHeader from './components/Header.vue';
+import { RouterView } from 'vue-router'
+
 export default{
+  components:{
+    NavigationHeader
+},
   data(){
     return{
       members: [{
@@ -116,14 +124,59 @@ export default{
       team: '',
       },
       ],
+      TeamsList:[],
+        filterList: [],
+        currentTeam: "",
     }
-  }
+  },
+  methods: {
+    
+      addTeam(name, phone, email, role) {
+            const newTeam = {
+                name: name,
+                phone: phone,
+                email: email,
+                role: role,
+                team: ""
+                
+            };
+            this.members.push(newTeam);
+        },
+        filterTeam(tName, role){
+            this.filterList = this.members.filter((member) => member.role === role);
+            this.currentTeam=tName;
+        },
+        // joinTeam(){
+        //     this.$emit("join-team", this.name,this.teamName)
+        //     this.teamShow=true
+        // }
+       
+        joinTeam(memberName) {
+            const member = this.members.find((m) => m.name === memberName);  
+            const newTeam = {
+                name: member.name,
+                phone: member.phone,
+                email: member.email,
+                role: member.role,
+                team: this.currentTeam,
+                
+            };
+            this.TeamsList.push(newTeam);
+            console.log(this.TeamsList)
+  
+        },
+
+    },
+  components: { RouterView }
 }
 
 </script>
 
 
 <style scoped>
+team-view{
+  background-color: red;
+}
 
 
 
