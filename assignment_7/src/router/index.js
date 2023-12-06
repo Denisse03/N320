@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../components/TeamView.Vue'
-import TeamView from '../views/TeamView.vue'
+import HomeView from '../components/TeamView.vue'
+import TeamView from '../views/teamView.vue'
+import MemberView from '../views/memberView.vue'
 
 const routes = [
   {
@@ -11,7 +12,7 @@ const routes = [
   {
     path: '/members',
     name: 'members',
-    component: HomeView
+    component: MemberView
   },
   {
     path: '/teams',

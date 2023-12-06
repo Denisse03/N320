@@ -1,17 +1,16 @@
 <template>
     <navigation-header></navigation-header>
 
-    <!-- <team-view ></team-view> -->
-   
-<!-- 
-    <RouterView :name="member.name" :phone="member.phone" :email="member.email" :role="member.role" :teamName="member.team" :currentTeam="currentTeam"/> -->
+  
+    <!-- <RouterView :teamnameList="teamnameList"   :members="members" :filterList="filterList" :currentTeam="currentTeam" 
+    @filter-team="filterTeam" @join-team="joinTeam" @add-team="addTeam"
+    @new-member="newMember"
+   /> -->
 
-    <!-- <RouterView  :name="name" :phone="phone" :email="email" :role="role" :teamName="team" :currentTeam="currentTeam"/> -->
-<!-- 
-    <RouterView  :member="members" :filterList="filterList" @join-team="joinTeam"/> -->
-
-
-    <RouterView  :member="members" :filterList="filterList" :currentTeam="currentTeam"/>
+   <RouterView :teamnameList="teamnameList"   :members="members" :filterList="filterList" :currentTeam="currentTeam" 
+    @filter-team="filterTeam" @join-team="joinTeam" @add-team="addTeam"
+    
+   />
 
 
 </template>
@@ -127,31 +126,27 @@ export default{
       TeamsList:[],
         filterList: [],
         currentTeam: "",
+        teamnameList: [],
+       
     }
   },
   methods: {
-    
-      addTeam(name, phone, email, role) {
-            const newTeam = {
-                name: name,
-                phone: phone,
-                email: email,
-                role: role,
-                team: ""
-                
-            };
-            this.members.push(newTeam);
+      addTeam() {
+        // AddTeam function: add new team to teamnameList array
+        let exists= this.teamnameList.includes(this.currentTeam)
+        if(!exists){
+          this.teamnameList.push(this.currentTeam)
+        }
+        console.log(this.teamnameList)
+            
         },
         filterTeam(tName, role){
+          console.log('filterTeam called with:', tName, role);
             this.filterList = this.members.filter((member) => member.role === role);
             this.currentTeam=tName;
         },
-        // joinTeam(){
-        //     this.$emit("join-team", this.name,this.teamName)
-        //     this.teamShow=true
-        // }
-       
         joinTeam(memberName) {
+        
             const member = this.members.find((m) => m.name === memberName);  
             const newTeam = {
                 name: member.name,
@@ -159,12 +154,15 @@ export default{
                 email: member.email,
                 role: member.role,
                 team: this.currentTeam,
-                
             };
+            member.team = this.currentTeam
             this.TeamsList.push(newTeam);
             console.log(this.TeamsList)
+            this.addTeam(this.currentTeam) 
   
         },
+
+        
 
     },
   components: { RouterView }
