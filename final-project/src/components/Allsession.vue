@@ -253,13 +253,7 @@ filterPerson:[],
       console.log('session added:', session);
    
         },
-        removeSession(session){
-            const indexToRemove = this.sessions.findIndex(item => item.id === session.id);
-            if (indexToRemove !== -1) {
-      this.sessions.splice(indexToRemove, 1);
-    }
        
-      }, 
         clearFilters(){
             this.filterList = [];
             this.filterPerson = [];

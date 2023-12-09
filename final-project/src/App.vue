@@ -163,13 +163,7 @@ filterPerson:[],
             this.filterTag= '';
             this.filterPresenter='';
         },
-        removeSession(session){
-            let indexToRemove = this.sessions.findIndex(item => item.id === session.id);
-            if (indexToRemove !== -1) {
-      this.sessions.splice(indexToRemove, 1);
-    }
        
-      }
 
         },
   
