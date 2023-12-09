@@ -25,9 +25,9 @@
     },
     methods: {
       removeSession(session) {
-        const indexToRemove = this.adds.findIndex((item) => item.id === session.id);
-        if (indexToRemove !== -1) {
-          this.adds.splice(indexToRemove, 1);
+        let removal = this.adds.findIndex((item) => item.id === session.id);
+        if (removal !== -1) {
+          this.adds.splice(removal, 1);
         }
       },
     },
